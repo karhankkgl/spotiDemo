@@ -4,6 +4,7 @@ class MusicItemModel {
   final Duration duration;
   final String? albumName;
   final String? coverUrl;
+  bool isFavorite;
 
   MusicItemModel({
     this.albumName,
@@ -11,6 +12,7 @@ class MusicItemModel {
     required this.songName,
     required this.artistName,
     required this.duration,
+    this.isFavorite = false,
   });
 }
 

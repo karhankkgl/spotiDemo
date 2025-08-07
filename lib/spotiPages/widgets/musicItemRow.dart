@@ -22,8 +22,6 @@ class Musicitemrow extends StatefulWidget {
 }
 
 class _MusicitemrowState extends State<Musicitemrow> {
-  bool isFavorite = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +33,9 @@ class _MusicitemrowState extends State<Musicitemrow> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MusicPage()),
+                MaterialPageRoute(
+                  builder: (context) => MusicPage(musicItem: widget.musicItem),
+                ),
               );
             },
             size: 40,
@@ -56,12 +56,12 @@ class _MusicitemrowState extends State<Musicitemrow> {
           IconButton(
             onPressed: () {
               setState(() {
-                isFavorite = !isFavorite;
+                widget.musicItem.isFavorite = !widget.musicItem.isFavorite;
               });
-              widget.onLikePressed();
+
             },
             icon: Icon(Icons.favorite),
-            color: isFavorite ? Colors.red : Colors.grey,
+            color: widget.musicItem.isFavorite ? Colors.red : Colors.grey,
           ),
         ],
       ),

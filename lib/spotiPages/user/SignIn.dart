@@ -7,6 +7,7 @@ import 'package:further/spotiPages/ControllerHomePage.dart';
 import 'package:further/spotiPages/user/Loading.dart';
 import 'package:further/spotiPages/user/PasswordField.dart';
 import 'package:further/spotiPages/theme.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -27,12 +28,25 @@ class _SigninState extends State<Signin> {
       if (emailController.text == fixedEmail &&
           passwordController.text == fixedPassword) {
         setState(() {
-          errorMessage = 'girdin';
+          Fluttertoast.showToast(
+            msg: "Login Success!!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            fontSize: 30,
+          );
         });
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => Controllerhomepage()),
         );
+      } else {
+        Fluttertoast.showToast(
+          msg: "Username or password invalid",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          fontSize: 30,
+        );
+        return;
       }
     }
   }
